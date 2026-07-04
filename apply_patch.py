@@ -9,10 +9,10 @@ No game data is contained in the patch; you must supply your own legal copy.
 """
 import sys, os, hashlib
 
-PATCH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VC2_KoreanPatch_v19.xdelta')
+PATCH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VC2_KoreanPatch_v23.xdelta')
 SRC_SHA1 = '809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65'
 SRC_SIZE = 1120927744
-OUT_SHA1 = 'b355f638e7842aa861b90aafa8fcc6f6ff96564d'
+OUT_SHA1 = '242566166785c3601457ecce954258e943da9dd8'
 
 def sha1(path):
     h = hashlib.sha1()
@@ -25,7 +25,7 @@ def main():
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(1)
     src = sys.argv[1]
-    out = sys.argv[2] if len(sys.argv) > 2 else 'VC2_Korean_v19.iso'
+    out = sys.argv[2] if len(sys.argv) > 2 else 'VC2_Korean_v23.iso'
     if not os.path.exists(src):
         print(f'[!] Original ISO not found: {src}'); sys.exit(1)
     if not os.path.exists(PATCH):
