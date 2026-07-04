@@ -1,0 +1,12 @@
+# NEVER commit game data or ISOs — patch (diff) only
+*.iso
+*.ISO
+*.cpk
+*.CPK
+*.BIN
+*.MTP
+*.MXE
+*.BF1
+*.pmf
+*.PMF
+_work/
