@@ -66,7 +66,7 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v19.xdelta VC2_Korean_v19.iso
 
 ## 🙏 크레딧 (Credits)
 
-- 번역·제작 / Translation & hacking: (본인 이름으로 수정하세요)
+- 번역·제작 / Translation & hacking: [@snake7594](https://github.com/snake7594)
 - 리버스 엔지니어링 보조 / RE assist: Claude (Anthropic)
 - 도구 / Tools: [YACpkTool](https://github.com/Brolijah/YACpkTool), UMD-replace (CUE), [xdelta3](https://github.com/jmacd/xdelta)
 - 참고 / Reference: VC2 러시아어 팬패치 (team MOSAS)
