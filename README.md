@@ -1,5 +1,7 @@
 # 전장의 발큐리아 2 한글패치 (Valkyria Chronicles 2 — Korean Translation Patch)
 
+![Valkyria Chronicles 2](screenshots/title.png)
+
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
 **패치 버전:** v25 · **형식:** xdelta3 (VCDIFF) · **크기:** 0.81 MB
 
