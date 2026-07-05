@@ -1,7 +1,7 @@
 # 전장의 발큐리아 2 한글패치 (Valkyria Chronicles 2 — Korean Translation Patch)
 
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
-**패치 버전:** v23 · **형식:** xdelta3 (VCDIFF) · **크기:** 0.78 MB
+**패치 버전:** v25 · **형식:** xdelta3 (VCDIFF) · **크기:** 0.81 MB
 
 일본어판 PSP 게임을 한국어로 번역하는 **비공식 팬 번역 패치**입니다. 게임에 내장된 폰트의 한자 자리에 한글을 넣는 방식(wansung)으로, 별도 폰트 없이 게임 안에서 한글이 그려집니다.
 
@@ -20,17 +20,17 @@
 | MD5 | `583a022cf364e93020abf13d69a76ef8` |
 | SHA1 | `809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65` |
 
-패치 적용 후 결과물 ISO SHA1: `242566166785c3601457ecce954258e943da9dd8`
+패치 적용 후 결과물 ISO SHA1: `b7bad93c41c00214c5c6eda626fe4c0886594f9f`
 
 ---
 
 ## 📥 적용 방법 (How to Apply)
 
-원본 ISO에 `VC2_KoreanPatch_v23.xdelta`를 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
+원본 ISO에 `VC2_KoreanPatch_v25.xdelta`를 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
 
 ### 방법 1 — Delta Patcher (GUI, 권장 / recommended)
 1. [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) 다운로드
-2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v23.xdelta` 선택
+2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v25.xdelta` 선택
 3. **Apply patch** 클릭 → 한글패치 ISO 생성
 
 ### 방법 2 — 파이썬 (Python, 크로스플랫폼)
@@ -38,11 +38,11 @@
 pip install pyxdelta
 python apply_patch.py "원본.iso"
 ```
-→ `VC2_Korean_v23.iso` 생성 (해시 자동 검증)
+→ `VC2_Korean_v25.iso` 생성 (해시 자동 검증)
 
 ### 방법 3 — xdelta3 명령줄 (CLI)
 ```bash
-xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v23.xdelta VC2_Korean_v23.iso
+xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v25.xdelta VC2_Korean_v25.iso
 ```
 
 만든 ISO는 **PPSSPP**(권장) 또는 CFW PSP 실기에서 실행하세요.
@@ -64,6 +64,28 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v23.xdelta VC2_Korean_v23.iso
 - **이미지에 구워진 글자:** 전적 화면 헤더, HUD 라벨 등 텍스처(그림) 안에 그려진 글자는 폰트 교체 범위 밖이라 일본어로 남습니다.
 - **동영상(PMF) 자막:** 하드섭 재인코딩이 필요해 미번역입니다.
 - 세이브 데이터 화면의 "データがありません"는 게임이 아니라 **PPSSPP 시스템 다이얼로그**입니다 (PPSSPP 언어 설정으로 변경).
+
+## 🛠️ 직접 해보기 · 기술 자료 (Do-it-yourself / Technical materials)
+
+이 저장소에는 **포맷 역분석 도구와 상세 기술 문서**가 함께 들어 있어, 다른 SJIS 기반
+일본 게임을 패치하거나 이 패치를 재현·확장할 수 있습니다.
+
+- **[`docs/TECHNICAL.md`](docs/TECHNICAL.md)** — CPK 암호, BF1 폰트, MTPA/MXE 포맷,
+  wansung 한글 치환법, ★MXE 롤-암호화 영역 함정, 전체 파이프라인, 함정·교훈까지 총정리.
+- **[`tools/`](tools/)** — 파이썬 역분석·패치 모듈(`vc2crypt`, `mxe_tool`, `mtpa_edit`,
+  `vc2_font2b`, `wansung_encode`, `nested_runs`, `boottest`) + 사용법.
+
+> 도구는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
+> 포함하지 않습니다. `git`으로 clone 후 `docs/TECHNICAL.md`부터 읽으세요.
+
+```
+vc2-korean-patch/
+├─ VC2_KoreanPatch_v25.xdelta   # 배포 패치 (원본 ISO에 적용)
+├─ apply_patch.py               # 파이썬 적용 스크립트 (해시 검증)
+├─ docs/TECHNICAL.md            # 기술 문서
+├─ tools/                       # 역분석·패치 도구 + README
+└─ screenshots/
+```
 
 ## 🙏 크레딧 (Credits)
 
