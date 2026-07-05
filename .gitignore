@@ -10,3 +10,8 @@
 *.pmf
 *.PMF
 _work/
+
+# python bytecode
+__pycache__/
+*.pyc
+patched_out/

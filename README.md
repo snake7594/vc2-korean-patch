@@ -74,8 +74,11 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v25.xdelta VC2_Korean_v25.iso
   wansung 한글 치환법, ★MXE 롤-암호화 영역 함정, 전체 파이프라인, 함정·교훈까지 총정리.
 - **[`tools/`](tools/)** — 파이썬 역분석·패치 모듈(`vc2crypt`, `mxe_tool`, `mtpa_edit`,
   `vc2_font2b`, `wansung_encode`, `nested_runs`, `boottest`) + 사용법.
+- **[`translation/`](translation/)** — **대사를 직접 바꿀 수 있는 번역 데이터**
+  (`translations.json`, 편집 가능한 `{jp, ko}` 16,000여 항목) + 재빌드 스크립트
+  (`rebuild.py`). 오역 수정·문체 변경·다른 번역본 제작에 쓰세요.
 
-> 도구는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
+> 도구·재빌드는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
 > 포함하지 않습니다. `git`으로 clone 후 `docs/TECHNICAL.md`부터 읽으세요.
 
 ```
@@ -84,6 +87,7 @@ vc2-korean-patch/
 ├─ apply_patch.py               # 파이썬 적용 스크립트 (해시 검증)
 ├─ docs/TECHNICAL.md            # 기술 문서
 ├─ tools/                       # 역분석·패치 도구 + README
+├─ translation/                 # 편집 가능한 번역 데이터 + rebuild.py
 └─ screenshots/
 ```
 
