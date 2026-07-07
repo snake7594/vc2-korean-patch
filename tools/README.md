@@ -24,6 +24,9 @@ VC2(그리고 대부분의 SJIS 기반 일본 PSP 게임)의 텍스트를 추출
 | `mxe_tool.py` | MXE(MXEN/MXEC) 롤링 XOR 복호/암호 + 문자열 런 추출. **롤 영역 = datasize까지**(POF0/ENRS 보존). `decrypt_file`/`encrypt_file`/`extract_runs`. |
 | `nested_runs.py` | 비표준 컨테이너 MTP를 위한 **동일 길이 SJIS 런 치환**(구조 무손상). |
 | `boottest.py` | PPSSPP로 ISO 부팅 후 에뮬 RAM 매직 개수로 부팅 성패 자동 판정(≈845 정상). |
+| `htx_tool.py` | **텍스처(이미지) 디코드/인코드**. HTEX→HTSF→MIG(T4/T8, PSP 스위즐, 다중 아틀라스) 파싱. `iter_packets`, `decode_packet`→PIL, `encode_into`(안 바뀐 픽셀은 원본 인덱스 유지=무손실), `encode_indices`(런타임 틴트 글리프 텍스처용 인덱스 직접 기록). |
+| `htx_pipeline.py` | HTX 일괄 추출(`extract`) / 편집 PNG 재삽입(`insert`). 미편집 이미지는 바이트 동일 보장. |
+| `image_extract_all.py` | **롬 전체 이미지 추출** — HTX뿐 아니라 MLX/NCP/ABR 내 텍스처 + DAT 내 PNG까지 4,200장(캐리어별 폴더 + manifest). |
 
 ## 최소 예시
 
