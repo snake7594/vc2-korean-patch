@@ -3,7 +3,7 @@
 ![Valkyria Chronicles 2](screenshots/title.png)
 
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
-**패치 버전:** v26 · **형식:** xdelta3 (VCDIFF) · **크기:** 0.89 MB
+**패치 버전:** v27 · **형식:** xdelta3 (VCDIFF) · **크기:** 37.6 MB
 
 일본어판 PSP 게임을 한국어로 번역하는 **비공식 팬 번역 패치**입니다. 게임에 내장된 폰트의 한자 자리에 한글을 넣는 방식(wansung)으로, 별도 폰트 없이 게임 안에서 한글이 그려집니다.
 
@@ -22,17 +22,19 @@
 | MD5 | `583a022cf364e93020abf13d69a76ef8` |
 | SHA1 | `809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65` |
 
-패치 적용 후 결과물 ISO SHA1: `90ba7ccffcdf68045af0261c7676a37a36e8ef16`
+패치 적용 후 결과물 ISO SHA1: `87b644f2facafcce7416dfac97e2a49f69ae24e6`
+
+> 💡 **v27 신규:** 타이틀 화면 한글화 + **동영상 9종 한국어 자막**(오프닝/스토리 회상/캐릭터 소개/엔딩)이 추가되어 패치 크기가 커졌습니다. 자막은 원문 위/아래로 겹치지 않게 배치한 흰 글자(검은 테두리) 방식입니다.
 
 ---
 
 ## 📥 적용 방법 (How to Apply)
 
-원본 ISO에 `VC2_KoreanPatch_v26.xdelta`를 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
+원본 ISO에 `VC2_KoreanPatch_v27.xdelta`를 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
 
 ### 방법 1 — Delta Patcher (GUI, 권장 / recommended)
 1. [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) 다운로드
-2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v26.xdelta` 선택
+2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v27.xdelta` 선택
 3. **Apply patch** 클릭 → 한글패치 ISO 생성
 
 ### 방법 2 — 파이썬 (Python, 크로스플랫폼)
@@ -40,11 +42,11 @@
 pip install pyxdelta
 python apply_patch.py "원본.iso"
 ```
-→ `VC2_Korean_v26.iso` 생성 (해시 자동 검증)
+→ `VC2_Korean_v27.iso` 생성 (해시 자동 검증)
 
 ### 방법 3 — xdelta3 명령줄 (CLI)
 ```bash
-xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v26.xdelta VC2_Korean_v26.iso
+xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v27.xdelta VC2_Korean_v27.iso
 ```
 
 만든 ISO는 **PPSSPP**(권장) 또는 CFW PSP 실기에서 실행하세요.
@@ -60,12 +62,14 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v26.xdelta VC2_Korean_v26.iso
 - **캐릭터명 · 병과명 · 무기명 · 차량명 · 아이템명**
 - **UI / 메뉴 / 시스템 메시지 / 난이도·세이브 화면**
 - **아카데미 허브 메뉴 + 백과사전**
+- **타이틀 화면** (v27): 로고·부제·「Press START button」 등 타이틀 텍스처 한글화
+- **동영상 한국어 자막** (v27): 일본어 자막이 있는 영상 전부(오프닝 프롤로그, 챕터/스토리 회상, 캐릭터 소개, 엔딩 프로필) — 원문을 가리지 않게 위/아래로 배치한 흰 글자+검은 테두리 하드섭
 - **이미지에 구워진 텍스트 일부** (v26): 건강 경고 화면, 전투 결과 화면 라벨(전적 보고서·전투 성적·부대명·기본 전적·클리어 평가·턴/명/대/개 등), 세이브/인스톨 데이터 아이콘
 
 ## ⚠️ 알려진 제한 (Known Limitations)
 
-- **이미지에 구워진 글자(일부):** 타이틀 로고(원본 유지 결정)와 HUD 라벨 등 일부 텍스처 글자는 일본어로 남습니다. 주요 화면(경고·전투 결과·세이브 아이콘)은 v26에서 한글화했습니다.
-- **동영상(PMF) 자막:** 하드섭 재인코딩이 필요해 미번역입니다.
+- **이미지에 구워진 글자(일부):** 전투 HUD 라벨 등 일부 텍스처 글자는 일본어로 남습니다. 주요 화면(타이틀·경고·전투 결과·세이브 아이콘)과 동영상 자막은 한글화했습니다.
+- **엔딩 크레딧 영상:** 실제 제작진·성우 이름이라 원본(일본어) 유지.
 - 세이브 데이터 화면의 "データがありません"는 게임이 아니라 **PPSSPP 시스템 다이얼로그**입니다 (PPSSPP 언어 설정으로 변경).
 
 ## 🛠️ 직접 해보기 · 기술 자료 (Do-it-yourself / Technical materials)
@@ -86,7 +90,7 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v26.xdelta VC2_Korean_v26.iso
 
 ```
 vc2-korean-patch/
-├─ VC2_KoreanPatch_v26.xdelta   # 배포 패치 (원본 ISO에 적용)
+├─ VC2_KoreanPatch_v27.xdelta   # 배포 패치 (원본 ISO에 적용)
 ├─ apply_patch.py               # 파이썬 적용 스크립트 (해시 검증)
 ├─ docs/TECHNICAL.md            # 기술 문서
 ├─ tools/                       # 역분석·패치 도구 + README
