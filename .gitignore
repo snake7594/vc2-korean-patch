@@ -11,6 +11,10 @@
 *.PMF
 _work/
 
+# the xdelta patch is large (movie re-encode) -> shipped as a Release asset,
+# not committed to the repo
+*.xdelta
+
 # python bytecode
 __pycache__/
 *.pyc
