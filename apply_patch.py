@@ -9,10 +9,10 @@ No game data is contained in the patch; you must supply your own legal copy.
 """
 import sys, os, hashlib
 
-PATCH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VC2_KoreanPatch_v28.xdelta')
+PATCH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'VC2_KoreanPatch_v29.xdelta')
 SRC_SHA1 = '809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65'
 SRC_SIZE = 1120927744
-OUT_SHA1 = '8f6a2c91fe16547bbb9a39c2106b2956848c44ac'
+OUT_SHA1 = '92da5ca0593bd2bf3191bb7ce6f8a4be5efdfbbd'
 
 def sha1(path):
     h = hashlib.sha1()
@@ -25,12 +25,12 @@ def main():
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(1)
     src = sys.argv[1]
-    out = sys.argv[2] if len(sys.argv) > 2 else 'VC2_Korean_v28.iso'
+    out = sys.argv[2] if len(sys.argv) > 2 else 'VC2_Korean_v29.iso'
     if not os.path.exists(src):
         print(f'[!] Original ISO not found: {src}'); sys.exit(1)
     if not os.path.exists(PATCH):
         print(f'[!] Patch file not found next to this script: {PATCH}')
-        print('    Download VC2_KoreanPatch_v28.xdelta from the Releases page and'
+        print('    Download VC2_KoreanPatch_v29.xdelta from the Releases page and'
               ' put it in the same folder as this script.'); sys.exit(1)
     try:
         import pyxdelta
