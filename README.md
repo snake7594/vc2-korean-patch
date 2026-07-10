@@ -3,7 +3,7 @@
 ![Valkyria Chronicles 2](screenshots/title.png)
 
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
-**패치 버전:** v29 · **형식:** xdelta3 (VCDIFF) · **크기:** 62.6 MB
+**패치 버전:** v30 · **형식:** xdelta3 (VCDIFF) · **크기:** 54.2 MB
 
 일본어판 PSP 게임을 한국어로 번역하는 **비공식 팬 번역 패치**입니다. 게임에 내장된 폰트의 한자 자리에 한글을 넣는 방식(wansung)으로, 별도 폰트 없이 게임 안에서 한글이 그려집니다.
 
@@ -22,9 +22,9 @@
 | MD5 | `583a022cf364e93020abf13d69a76ef8` |
 | SHA1 | `809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65` |
 
-패치 적용 후 결과물 ISO SHA1: `92da5ca0593bd2bf3191bb7ce6f8a4be5efdfbbd`
+패치 적용 후 결과물 ISO SHA1: `59f1ec0a61912223115258a2efb09821f74bc14e`
 
-> 💡 **v29 (실기 동영상 재생 수정):** v27·v28의 자막 동영상이 PPSSPP에서는 되지만 **실기(PSP)에서 재생되지 않던 문제**를 고쳤습니다. 핵심 원인은 재인코딩 H.264에 **weighted prediction(weightp)**이 켜져 있었던 것(원본은 꺼져 있음) — PSP 하드웨어 Media Engine이 이를 처리하지 못함. 그 외 filler NAL 제거, HRD/pic_timing SEI, 연속 패킹, 프레임 크기 제한도 원본에 맞췄습니다. **v27·v28 사용자는 v29로 다시 적용하세요.**
+> 💡 **v30 (실기 동영상 재생 수정):** 자막 동영상이 PPSSPP에서는 되지만 **실기(PSP)에서 재생되지 않던 문제**를 고쳤습니다. 재인코딩한 PMF를 **코딩된 픽셀만 빼고 원본과 바이트 단위로 동일**하게 만들었습니다 — 원본의 팩 SCR·영상 PES 헤더·PTS·오디오·헤더를 그대로 재사용하고, 각 프레임을 원본과 같은 위치에 정렬해 실기 Media Engine의 버퍼 모델(SCR↔PTS)을 원본과 일치시켰습니다. H.264도 원본에 맞춤(Main@2.1·CABAC·ref1·B프레임 없음·weightp=0·AUD/HRD/pic_timing SEI). **이전 버전(v27~v29) 사용자는 v30으로 다시 적용하세요.**
 >
 > **동영상 자막·타이틀 화면**(v27부터): 타이틀 한글화 + 일본어 자막이 있는 영상 전부에 한국어 자막(원문 위/아래로 겹치지 않게 배치한 흰 글자+검은 테두리). 동영상 재인코딩이 포함되어 패치 용량이 큽니다.
 
@@ -32,11 +32,11 @@
 
 ## 📥 적용 방법 (How to Apply)
 
-먼저 **[Releases](../../releases/latest)** 페이지에서 `VC2_KoreanPatch_v29.xdelta`를 내려받으세요 (용량이 커서 저장소가 아닌 릴리스에 첨부되어 있습니다). 이 패치를 원본 ISO에 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
+먼저 **[Releases](../../releases/latest)** 페이지에서 `VC2_KoreanPatch_v30.xdelta`를 내려받으세요 (용량이 커서 저장소가 아닌 릴리스에 첨부되어 있습니다). 이 패치를 원본 ISO에 적용하면 한글패치된 ISO가 만들어집니다. 세 가지 방법 중 편한 것을 쓰세요.
 
 ### 방법 1 — Delta Patcher (GUI, 권장 / recommended)
 1. [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) 다운로드
-2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v29.xdelta` 선택
+2. **Original file** = 원본 ISO, **XDelta patch** = `VC2_KoreanPatch_v30.xdelta` 선택
 3. **Apply patch** 클릭 → 한글패치 ISO 생성
 
 ### 방법 2 — 파이썬 (Python, 크로스플랫폼)
@@ -44,11 +44,11 @@
 pip install pyxdelta
 python apply_patch.py "원본.iso"
 ```
-→ `VC2_Korean_v29.iso` 생성 (해시 자동 검증)
+→ `VC2_Korean_v30.iso` 생성 (해시 자동 검증)
 
 ### 방법 3 — xdelta3 명령줄 (CLI)
 ```bash
-xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v29.xdelta VC2_Korean_v29.iso
+xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v30.xdelta VC2_Korean_v30.iso
 ```
 
 만든 ISO는 **PPSSPP**(권장) 또는 CFW PSP 실기에서 실행하세요.
@@ -90,7 +90,7 @@ xdelta3 -d -s "원본.iso" VC2_KoreanPatch_v29.xdelta VC2_Korean_v29.iso
 > 도구·재빌드는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
 > 포함하지 않습니다. `git`으로 clone 후 `docs/TECHNICAL.md`부터 읽으세요.
 
-> ※ 배포 패치 `VC2_KoreanPatch_v29.xdelta`는 용량이 커서 저장소가 아니라 **Releases**에
+> ※ 배포 패치 `VC2_KoreanPatch_v30.xdelta`는 용량이 커서 저장소가 아니라 **Releases**에
 > 첨부되어 있습니다. 받아서 `apply_patch.py`와 같은 폴더에 두세요.
 
 ```
