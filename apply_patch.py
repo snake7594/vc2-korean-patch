@@ -5,8 +5,8 @@ Usage:  python apply_patch.py "path/to/original.iso" [output.iso]
 
 Requires:  pip install pyxdelta
 Put ONE of the patch files next to this script (download from the Releases page):
-  - VC2_KoreanPatch_v31_hw.xdelta   real PSP (CFW)  -> movies stay original (JP)
-  - VC2_KoreanPatch_v31_emu.xdelta  PPSSPP emulator -> movies have Korean subtitles
+  - VC2_KoreanPatch_v32_hw.xdelta   real PSP (CFW)  -> Korean-subtitled movies (Sony encoder)
+  - VC2_KoreanPatch_v32_emu.xdelta  PPSSPP emulator -> Korean-subtitled movies (x264)
 The script auto-detects which one is present, verifies the source hash, applies
 it, and verifies the result. No game data is contained in the patch.
 """
@@ -17,12 +17,12 @@ SRC_SHA1 = '809a6a106aaf39d3a5aa18b5d7b0f7b70b6e1d65'
 SRC_SIZE = 1120927744
 # patch filename -> (result SHA1, default output name, label)
 PATCHES = {
-    'VC2_KoreanPatch_v31_hw.xdelta':
-        ('b3b7bdf2a8b170852ea381bb0fbf315c505d978c', 'VC2_Korean_v31_hw.iso',
-         'real PSP (movies original / JP)'),
-    'VC2_KoreanPatch_v31_emu.xdelta':
-        ('59f1ec0a61912223115258a2efb09821f74bc14e', 'VC2_Korean_v31_emu.iso',
-         'PPSSPP (movies Korean-subtitled)'),
+    'VC2_KoreanPatch_v32_hw.xdelta':
+        ('a7bb9739c748fc1bd2b8773d8e00332fd4fc98ea', 'VC2_Korean_v32_hw.iso',
+         'real PSP (movies Korean-subtitled, Sony PSMF encoder)'),
+    'VC2_KoreanPatch_v32_emu.xdelta':
+        ('59f1ec0a61912223115258a2efb09821f74bc14e', 'VC2_Korean_v32_emu.iso',
+         'PPSSPP (movies Korean-subtitled, x264)'),
 }
 
 
