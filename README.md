@@ -3,16 +3,16 @@
 ![Valkyria Chronicles 2](screenshots/title.png)
 
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
-**패치 버전:** v33 · **형식:** xdelta3 (VCDIFF) + DLC 드롭인 zip · **크기:** 실기용 65 MB / 에뮬용 54 MB / DLC 3.3 MB
+**패치 버전:** v34 · **형식:** xdelta3 (VCDIFF) + DLC 드롭인 zip · **크기:** 실기용 65 MB / 에뮬용 54 MB / DLC 3.3 MB
 
-> ### 🎮 v33 = 본편 + **DLC 22개 미션** 한글패치 (한 번에)
+> ### 🎮 v34 = 본편 + **DLC 한글패치** (한 번에)
 > | 구성 | 대상 | 파일 | 적용 |
 > |---|---|---|---|
-> | **본편 (실기용)** | 실제 PSP (CFW) | `VC2_KoreanPatch_v33_hw.xdelta` | ISO에 xdelta 적용 |
-> | **본편 (에뮬용)** | PPSSPP | `VC2_KoreanPatch_v33_emu.xdelta` | ISO에 xdelta 적용 |
-> | **DLC (공용)** | 실기 + PPSSPP | `VC2_KoreanPatch_v33_DLC.zip` | DLC 폴더에 압축 해제 |
+> | **본편 (실기용)** | 실제 PSP (CFW) | `VC2_KoreanPatch_v34_hw.xdelta` | ISO에 xdelta 적용 |
+> | **본편 (에뮬용)** | PPSSPP | `VC2_KoreanPatch_v34_emu.xdelta` | ISO에 xdelta 적용 |
+> | **DLC (공용)** | 실기 + PPSSPP | `VC2_KoreanPatch_v34_DLC.zip` | DLC 폴더에 압축 해제 |
 >
-> **v33 신규 = DLC 한글패치.** 다운로드 미션(엑스트라 미션·검정시험·이벤트전 등) 22개의 미션명·적 에이스명·보상 무기명·브리핑을 한글화했습니다. **본편 ISO 패치는 v32와 완전히 동일**하므로, 이미 v32를 적용했다면 ISO는 다시 패치할 필요 없이 **DLC만 추가**하면 됩니다.
+> **v34 = DLC 콘텐츠 목록 보강.** DLC 22개 미션(미션명·에이스명·무기명·브리핑)에 더해, **스토리 미션 「멜페어의 위기」메뉴와 보너스 스티커(알렉시스/마가리)**까지 한글화했습니다. **본편 ISO 패치는 v32/v33과 완전히 동일**하므로, 이미 적용했다면 ISO는 그대로 두고 **DLC zip만 새로 설치**하면 됩니다.
 >
 > 본편 동영상 자막은 v32와 동일: 실기용은 **Sony 정품 인코더**, 에뮬용은 **x264**. 텍스트·이미지·타이틀 한글화는 두 버전 동일합니다.
 
@@ -39,7 +39,7 @@
 
 ## 📥 적용 방법 (How to Apply)
 
-먼저 **[Releases](../../releases/latest)** 페이지에서 자기 환경에 맞는 패치를 내려받으세요 — 실제 PSP는 **`VC2_KoreanPatch_v33_hw.xdelta`**, PPSSPP는 **`VC2_KoreanPatch_v33_emu.xdelta`** (용량이 커서 저장소가 아닌 릴리스에 첨부). 이 패치를 원본 ISO에 적용하면 한글패치 ISO가 만들어집니다. 아래 `PATCH` 자리에 받은 파일명을 넣으세요. **DLC까지 쓰려면 아래 「🎁 DLC 설치」 절을 이어서 진행하세요.**
+먼저 **[Releases](../../releases/latest)** 페이지에서 자기 환경에 맞는 패치를 내려받으세요 — 실제 PSP는 **`VC2_KoreanPatch_v34_hw.xdelta`**, PPSSPP는 **`VC2_KoreanPatch_v34_emu.xdelta`** (용량이 커서 저장소가 아닌 릴리스에 첨부). 이 패치를 원본 ISO에 적용하면 한글패치 ISO가 만들어집니다. 아래 `PATCH` 자리에 받은 파일명을 넣으세요. **DLC까지 쓰려면 아래 「🎁 DLC 설치」 절을 이어서 진행하세요.**
 
 ### 방법 1 — Delta Patcher (GUI, 권장 / recommended)
 1. [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) 다운로드
@@ -63,7 +63,7 @@ xdelta3 -d -s "원본.iso" PATCH.xdelta VC2_Korean.iso
 
 ## 🎁 DLC 설치 (real PSP / PPSSPP)
 
-DLC 한글패치는 ISO 패치가 아니라 **DLC 폴더를 통째로 교체**하는 방식입니다. **[Releases](../../releases/latest)** 에서 **`VC2_KoreanPatch_v33_DLC.zip`** 을 받으세요. 압축 안에는 `PSP/GAME/NPJH50145/` 구조가 그대로 들어 있습니다.
+DLC 한글패치는 ISO 패치가 아니라 **DLC 폴더를 통째로 교체**하는 방식입니다. **[Releases](../../releases/latest)** 에서 **`VC2_KoreanPatch_v34_DLC.zip`** 을 받으세요. 압축 안에는 `PSP/GAME/NPJH50145/` 구조가 그대로 들어 있습니다.
 
 > ⚠️ **본편 한글패치(v32/v33)를 먼저 적용해야 합니다.** DLC에는 폰트가 없어 **본편 패치의 한글 폰트를 공유**합니다. 원본 일본판과 함께 쓰면 글자가 깨진 한자로 보입니다.
 >
@@ -93,7 +93,9 @@ ms0:/PSP/GAME/NPJH50145/
 └─ DL2A/  ...
 ```
 
-**DLC 번역 범위:** 22개 미션의 **미션명 · 적 에이스명 · 보상 무기(부품)명 · 미션 브리핑/승리조건**. (맵·수치 데이터, 개발용 내부 라벨은 비노출이라 제외.)
+**DLC 번역 범위:** 22개 미션의 **미션명 · 적 에이스명 · 보상 무기(부품)명 · 미션 브리핑/승리조건**, **스토리 미션 「멜페어의 위기」메뉴**(제목·장소·승리조건·제한), **보너스 스티커**(알렉시스/마가리 + 설명). (맵·수치 데이터, 개발용 내부 라벨은 비노출이라 제외.)
+
+> ℹ️ **알려진 제한:** 콘텐츠 목록의 일부 **훈련·검정·스커미시(演習！…EX) 미션 제목**은 데이터 파일이 아니라 게임이 실행 중에 조합하거나 EBOOT에 내장된 문자열이라, 현재 방식으로는 번역되지 않고 일본어로 남습니다(예: `攻略戦演習 対F組`, `裏課程修了報奨`). 향후 EBOOT 역분석으로 별도 검토 예정입니다.
 
 ---
 
@@ -109,7 +111,7 @@ ms0:/PSP/GAME/NPJH50145/
 - **타이틀 화면** (v27): 로고·부제·「Press START button」 등 타이틀 텍스처 한글화
 - **동영상 한국어 자막** (v32부터 실기·에뮬 모두): 일본어 자막이 있는 영상 전부(오프닝 프롤로그, 챕터/스토리 회상, 캐릭터 소개, 엔딩 프로필) — 원문을 가리지 않게 위/아래로 배치한 흰 글자+검은 테두리 하드섭. 실기용은 Sony 정품 인코더, 에뮬용은 x264로 인코딩.
 - **이미지에 구워진 텍스트 일부** (v26): 건강 경고 화면, 전투 결과 화면 라벨(전적 보고서·전투 성적·부대명·기본 전적·클리어 평가·턴/명/대/개 등), 세이브/인스톨 데이터 아이콘
-- **DLC 22개 미션** (v33, 별도 zip): 엑스트라 미션·병과 검정시험·이벤트전 등의 미션명·적 에이스명·보상 무기명·브리핑/승리조건 (설치는 위 「🎁 DLC 설치」 절 참고)
+- **DLC 콘텐츠 목록** (v34, 별도 zip): 22개 미션(미션명·에이스명·무기명·브리핑) + 스토리 미션 「멜페어의 위기」 메뉴 + 보너스 스티커 (설치는 위 「🎁 DLC 설치」 절 참고)
 
 ## ⚠️ 알려진 제한 (Known Limitations)
 
@@ -134,7 +136,7 @@ ms0:/PSP/GAME/NPJH50145/
 > 도구·재빌드는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
 > 포함하지 않습니다. `git`으로 clone 후 `docs/TECHNICAL.md`부터 읽으세요.
 
-> ※ 배포 패치(`VC2_KoreanPatch_v33_hw.xdelta` 실기용 / `_emu.xdelta` 에뮬용 / `_DLC.zip` DLC)는
+> ※ 배포 패치(`VC2_KoreanPatch_v34_hw.xdelta` 실기용 / `_emu.xdelta` 에뮬용 / `_DLC.zip` DLC)는
 > 저장소가 아니라 **Releases**에 첨부되어 있습니다. 받아서 `apply_patch.py`와 같은 폴더에 두세요.
 
 ```
@@ -144,7 +146,7 @@ vc2-korean-patch/
 ├─ tools/                       # 역분석·패치 도구 + README
 │  └─ dlc/                      # DLC 추출·주입 도구 + 번역 원본(dlc_ko.py)
 ├─ translation/                 # 편집 가능한 번역 데이터 + rebuild.py
-│  └─ dlc_translations.json     # DLC JP↔KO 대조표 (67쌍)
+│  └─ dlc_translations.json     # DLC JP↔KO 대조표 (76쌍)
 └─ screenshots/
 ```
 
