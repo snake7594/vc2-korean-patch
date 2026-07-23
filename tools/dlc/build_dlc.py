@@ -11,6 +11,7 @@ sys.path.insert(0, '..'); sys.path.insert(0, '.')
 import dlc_lib as dl, mxe_tool as mx, wansung_encode as we
 from dlc_ko import TR as MISSION_TR
 from dlc_mlx_ko import TR as MLX_TR
+from dlc_gameinfo_ko import TR as GI_TR, DL1D_TITLE
 
 SRC = "D:/psp/Valkyria Chronicles 2 Japan [NPJH50145]/DLC/NPJH50145"
 OUT = "out/NPJH50145"
@@ -18,6 +19,7 @@ MAP = json.load(open('../tl/mapping_v17.json', encoding='utf-8'))
 MAPPED = set(MAP)
 RAWM = json.load(open('dlc_missions_raw.json', encoding='utf-8'))
 RAWX = json.load(open('dlc_mlx_raw.json', encoding='utf-8'))
+RAWG = json.load(open('dlc_gameinfo_raw.json', encoding='utf-8'))
 BY_DLC = {RAWM[k]['dlc']: RAWM[k] for k in RAWM}
 
 def _cost(ko, nl):
@@ -69,14 +71,23 @@ def build():
     os.makedirs(OUT, exist_ok=True)
     if os.path.exists(f"{SRC}/PARAM.PBP"):
         shutil.copyfile(f"{SRC}/PARAM.PBP", f"{OUT}/PARAM.PBP")
-    # map DLC code -> list of (filename, runs, ko_list)
+    # map DLC code -> list of (filename, runs, ko_list, ext_end_or_None)
     jobs = {}
     for dcode, ko in MISSION_TR.items():
         m = BY_DLC[dcode]
-        jobs.setdefault(dcode, []).append((m['file'], m['runs'], ko))
+        runs = list(m['runs'])
+        # DL1D: add the standalone list-title run missed by the v33 filter
+        if dcode == 'DL1D':
+            runs = runs + [dict(start=DL1D_TITLE['start'], nbytes=DL1D_TITLE['nbytes'])]
+            ko = list(ko) + [DL1D_TITLE['ko']]
+        jobs.setdefault(dcode, []).append((m['file'], runs, ko, None))
     for key, ko in MLX_TR.items():
         dcode, fname = key.split('/')
-        jobs.setdefault(dcode, []).append((fname, RAWX[key]['runs'], ko))
+        jobs.setdefault(dcode, []).append((fname, RAWX[key]['runs'], ko, None))
+    # game_info extended-region jobs (blob must span to ext_end, past TOC size)
+    for dcode, ko in GI_TR.items():
+        g = RAWG[dcode]
+        jobs.setdefault(dcode, []).append((g['file'], g['runs'], ko, g['ext_end']))
 
     total = 0
     for dcode in sorted(os.listdir(SRC)):
@@ -91,16 +102,18 @@ def build():
         data = os.path.join(sp, dcode + "_DATA.EDAT")
         raw, files = dl.cpk_files(data)
         raw = bytearray(raw)
-        for fname, runs, ko in jobs.get(dcode, []):
+        for fname, runs, ko, ext_end in jobs.get(dcode, []):
             fi = [f for f in files if f['name'] == fname][0]
-            off, size = fi['off'], fi['size']
+            off = fi['off']
+            size = (ext_end - off) if ext_end else fi['size']
             blob = bytes(raw[off:off + size])
             log = []
             newblob = patch_file(blob, runs, ko, log)
             assert len(newblob) == size
             raw[off:off + size] = newblob
             total += len(log)
-            print(f"  {dcode}/{fname}: {len(log)} runs")
+            tag = " (ext)" if ext_end else ""
+            print(f"  {dcode}/{fname}{tag}: {len(log)} runs")
         open(os.path.join(dout, dcode + "_DATA.EDAT"), 'wb').write(bytes(raw))
     print(f"\nDONE: {total} runs injected -> {OUT}/")
 
