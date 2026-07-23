@@ -8,10 +8,33 @@ roll-encrypt (flag preserved), write back. File size / CPK TOC unchanged.
 Korean encoded with the shipped main-patch font mapping (mapping_v17.json)."""
 import sys, os, json, struct, shutil
 sys.path.insert(0, '..'); sys.path.insert(0, '.')
-import dlc_lib as dl, mxe_tool as mx, wansung_encode as we
+import dlc_lib as dl, mxe_tool as mx
+import dlc_text as dt
 from dlc_ko import TR as MISSION_TR
 from dlc_mlx_ko import TR as MLX_TR
 from dlc_gameinfo_ko import TR as GI_TR, DL1D_TITLE
+
+def _fullwidth(s):
+    """half-width A-Z/a-z -> full-width (render at 32u, not garbage HFPR)."""
+    o = []
+    for c in s:
+        if 'A' <= c <= 'Z':
+            o.append(chr(ord(c) - 0x41 + 0xFF21))
+        elif 'a' <= c <= 'z':
+            o.append(chr(ord(c) - 0x61 + 0xFF41))
+        else:
+            o.append(c)
+    return ''.join(o)
+
+def _reflow(ko, box=dt.BOX_BRIEFING):
+    """Drop spaces on any line wider than the display box (no content loss)."""
+    out = []
+    for ln in ko.split('\n'):
+        t = ln
+        while ' ' in t and dt.width(t) > box:
+            t = t.replace(' ', '', 1)
+        out.append(t)
+    return '\n'.join(out)
 
 SRC = "D:/psp/Valkyria Chronicles 2 Japan [NPJH50145]/DLC/NPJH50145"
 OUT = "out/NPJH50145"
@@ -22,19 +45,21 @@ RAWX = json.load(open('dlc_mlx_raw.json', encoding='utf-8'))
 RAWG = json.load(open('dlc_gameinfo_raw.json', encoding='utf-8'))
 BY_DLC = {RAWM[k]['dlc']: RAWM[k] for k in RAWM}
 
-def _cost(ko, nl):
-    return len(we.encode_ko(ko, MAP, nl=nl))
+def _enc(ko, nl):
+    return dt.encode(ko, MAP, nl=nl)
 
 def _fit(ko, nb, nl):
-    """encode_ko bytes <= nb; trim spaces right-to-left if needed."""
-    if _cost(ko, nl) <= nb:
-        return we.encode_ko(ko, MAP, nl=nl)
+    """full-width letters + per-line width reflow + byte-budget space-trim."""
+    ko = _fullwidth(ko)
+    ko = _reflow(ko)
+    if len(_enc(ko, nl)) <= nb:
+        return _enc(ko, nl)
     idxs = [i for i, c in enumerate(ko) if c == ' ']
     for k in range(1, len(idxs) + 1):
         rm = set(idxs[-k:])
         t = ''.join(c for i, c in enumerate(ko) if not (c == ' ' and i in rm))
-        if _cost(t, nl) <= nb:
-            return we.encode_ko(t, MAP, nl=nl)
+        if len(_enc(t, nl)) <= nb:
+            return _enc(t, nl)
     raise AssertionError(f"cannot fit {ko!r} into {nb}B")
 
 def _find_region(blob, first_off):

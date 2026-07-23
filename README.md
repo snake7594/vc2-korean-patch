@@ -3,16 +3,16 @@
 ![Valkyria Chronicles 2](screenshots/title.png)
 
 **대상 게임:** 戦場のヴァルキュリア2 ガリア王立士官学校 (PSP, `NPJH50145`, v1.01)
-**패치 버전:** v35 · **형식:** xdelta3 (VCDIFF) + DLC 드롭인 zip · **크기:** 실기용 65 MB / 에뮬용 54 MB / DLC 3.3 MB
+**패치 버전:** v36 · **형식:** xdelta3 (VCDIFF) + DLC 드롭인 zip · **크기:** 실기용 65 MB / 에뮬용 54 MB / DLC 3.3 MB
 
-> ### 🎮 v35 = 본편 + **DLC 완전 한글패치** (한 번에)
+> ### 🎮 v36 = 본편 + **DLC 완전 한글패치** (한 번에)
 > | 구성 | 대상 | 파일 | 적용 |
 > |---|---|---|---|
-> | **본편 (실기용)** | 실제 PSP (CFW) | `VC2_KoreanPatch_v35_hw.xdelta` | ISO에 xdelta 적용 |
-> | **본편 (에뮬용)** | PPSSPP | `VC2_KoreanPatch_v35_emu.xdelta` | ISO에 xdelta 적용 |
-> | **DLC (공용)** | 실기 + PPSSPP | `VC2_KoreanPatch_v35_DLC.zip` | DLC 폴더에 압축 해제 |
+> | **본편 (실기용)** | 실제 PSP (CFW) | `VC2_KoreanPatch_v36_hw.xdelta` | ISO에 xdelta 적용 |
+> | **본편 (에뮬용)** | PPSSPP | `VC2_KoreanPatch_v36_emu.xdelta` | ISO에 xdelta 적용 |
+> | **DLC (공용)** | 실기 + PPSSPP | `VC2_KoreanPatch_v36_DLC.zip` | DLC 폴더에 압축 해제 |
 >
-> **v35 = DLC 콘텐츠 목록 완전 한글화.** 훈련·검정·격전EX를 포함한 **콘텐츠 목록의 모든 미션 제목/설명/DLC 무기 정보**까지 한글화했습니다(제목 데이터가 CPK TOC에 잡히지 않는 game_info 확장 영역에 숨어 있던 것을 발견). **본편 ISO 패치는 v32~v34와 완전히 동일**하므로, 이미 적용했다면 ISO는 그대로 두고 **DLC zip만 새로 설치**하면 됩니다.
+> **v36 = 작전 브리핑 줄 잘림 수정.** 반각 대문자(Ｆ組의 F 등)가 폰트 폭 표의 잘못된 값으로 과도하게 넓게 렌더돼 브리핑이 세로로 밀리며 첫 줄이 잘리던 문제를, 원문처럼 **전각 문자**로 바꾸고 넘치는 줄을 재배치해 해결했습니다. (v35의 콘텐츠 목록 전체 한글화 포함.) **본편 ISO 패치는 v32~v35와 완전히 동일**하므로, 이미 적용했다면 ISO는 그대로 두고 **DLC zip만 새로 설치**하면 됩니다.
 >
 > 본편 동영상 자막은 v32와 동일: 실기용은 **Sony 정품 인코더**, 에뮬용은 **x264**. 텍스트·이미지·타이틀 한글화는 두 버전 동일합니다.
 
@@ -39,7 +39,7 @@
 
 ## 📥 적용 방법 (How to Apply)
 
-먼저 **[Releases](../../releases/latest)** 페이지에서 자기 환경에 맞는 패치를 내려받으세요 — 실제 PSP는 **`VC2_KoreanPatch_v35_hw.xdelta`**, PPSSPP는 **`VC2_KoreanPatch_v35_emu.xdelta`** (용량이 커서 저장소가 아닌 릴리스에 첨부). 이 패치를 원본 ISO에 적용하면 한글패치 ISO가 만들어집니다. 아래 `PATCH` 자리에 받은 파일명을 넣으세요. **DLC까지 쓰려면 아래 「🎁 DLC 설치」 절을 이어서 진행하세요.**
+먼저 **[Releases](../../releases/latest)** 페이지에서 자기 환경에 맞는 패치를 내려받으세요 — 실제 PSP는 **`VC2_KoreanPatch_v36_hw.xdelta`**, PPSSPP는 **`VC2_KoreanPatch_v36_emu.xdelta`** (용량이 커서 저장소가 아닌 릴리스에 첨부). 이 패치를 원본 ISO에 적용하면 한글패치 ISO가 만들어집니다. 아래 `PATCH` 자리에 받은 파일명을 넣으세요. **DLC까지 쓰려면 아래 「🎁 DLC 설치」 절을 이어서 진행하세요.**
 
 ### 방법 1 — Delta Patcher (GUI, 권장 / recommended)
 1. [Delta Patcher](https://github.com/marco-calautti/DeltaPatcher/releases) 다운로드
@@ -63,7 +63,7 @@ xdelta3 -d -s "원본.iso" PATCH.xdelta VC2_Korean.iso
 
 ## 🎁 DLC 설치 (real PSP / PPSSPP)
 
-DLC 한글패치는 ISO 패치가 아니라 **DLC 폴더를 통째로 교체**하는 방식입니다. **[Releases](../../releases/latest)** 에서 **`VC2_KoreanPatch_v35_DLC.zip`** 을 받으세요. 압축 안에는 `PSP/GAME/NPJH50145/` 구조가 그대로 들어 있습니다.
+DLC 한글패치는 ISO 패치가 아니라 **DLC 폴더를 통째로 교체**하는 방식입니다. **[Releases](../../releases/latest)** 에서 **`VC2_KoreanPatch_v36_DLC.zip`** 을 받으세요. 압축 안에는 `PSP/GAME/NPJH50145/` 구조가 그대로 들어 있습니다.
 
 > ⚠️ **본편 한글패치(v32 이상)를 먼저 적용해야 합니다.** DLC에는 폰트가 없어 **본편 패치의 한글 폰트를 공유**합니다. 원본 일본판과 함께 쓰면 글자가 깨진 한자로 보입니다.
 >
@@ -134,7 +134,7 @@ ms0:/PSP/GAME/NPJH50145/
 > 도구·재빌드는 **본인이 소유한 원본 ISO에서 추출한 파일**에 대해 동작하며, 게임 데이터는
 > 포함하지 않습니다. `git`으로 clone 후 `docs/TECHNICAL.md`부터 읽으세요.
 
-> ※ 배포 패치(`VC2_KoreanPatch_v35_hw.xdelta` 실기용 / `_emu.xdelta` 에뮬용 / `_DLC.zip` DLC)는
+> ※ 배포 패치(`VC2_KoreanPatch_v36_hw.xdelta` 실기용 / `_emu.xdelta` 에뮬용 / `_DLC.zip` DLC)는
 > 저장소가 아니라 **Releases**에 첨부되어 있습니다. 받아서 `apply_patch.py`와 같은 폴더에 두세요.
 
 ```
