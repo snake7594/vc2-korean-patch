@@ -19,3 +19,6 @@ _work/
 __pycache__/
 *.pyc
 patched_out/
+
+# DLC drop-in package -> Release asset, not committed
+*.zip
